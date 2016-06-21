@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?scenebuilder-preview-i18n-resource ../bundle/base.properties?>
+<?scenebuilder-stylesheet ../css/standard.css?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.media.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="872.0" prefWidth="1279.0" xmlns="http://javafx.com/javafx/8.0.66" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.capgemini.imageviewer.controller.ImageViewerController">
+   <top>
+      <Label alignment="CENTER" prefHeight="2.0" prefWidth="1279.0" text="Super Simple Image Viewer" BorderPane.alignment="CENTER">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </Label>
+   </top>
+   <bottom>
+      <Pane prefHeight="66.0" prefWidth="1279.0" BorderPane.alignment="CENTER">
+         <children>
+            <GridPane layoutX="-1.0" layoutY="1.0" prefHeight="64.0" prefWidth="1279.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" prefWidth="193.0" />
+                <ColumnConstraints hgrow="SOMETIMES" prefWidth="1086.0" />
+              </columnConstraints>
+              <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label alignment="CENTER_RIGHT" prefHeight="88.0" prefWidth="213.0" text="Location:   " GridPane.rowIndex="1" />
+                  <Label fx:id="locationLabel" prefHeight="90.0" prefWidth="1105.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="100.0" GridPane.columnIndex="1">
+                     <children>
+                        <Button fx:id="previousImageButton" mnemonicParsing="false" onAction="#previousImageButtonAction" prefHeight="50.0" prefWidth="100.0" text="Previous" />
+                        <Button fx:id="slideShowButton" mnemonicParsing="false" onAction="#slideShowButtonAction" prefHeight="32.0" prefWidth="117.0" text="Start SlideShow" textAlignment="CENTER" wrapText="true">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="nextImageButton" mnemonicParsing="false" onAction="#nextImageButtonAction" prefHeight="50.0" prefWidth="100.0" text="Next" />
+                     </children>
+                  </HBox>
+               </children>
+            </GridPane>
+         </children>
+      </Pane>
+   </bottom>
+   <left>
+      <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="780.0" prefWidth="159.0" BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="412.0" minHeight="10.0" prefHeight="43.0" vgrow="SOMETIMES" />
+            <RowConstraints prefHeight="737.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Button fx:id="openFolderButton" mnemonicParsing="false" onAction="#openFolderButtonAction" prefHeight="54.0" prefWidth="172.0" text="Open folder" />
+            <ListView fx:id="imageList" GridPane.rowIndex="1" />
+         </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+         <padding>
+            <Insets left="10.0" />
+         </padding>
+      </GridPane>
+   </left>
+   <center>
+      <ScrollPane fx:id="scrollPane" pannable="true" BorderPane.alignment="CENTER">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0">
+               <children>
+                  <ImageView fx:id="imageView" fitHeight="768.0" fitWidth="1106.0" layoutX="3.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </AnchorPane>
+        </content>
+      </ScrollPane>
+   </center>
+</BorderPane>
