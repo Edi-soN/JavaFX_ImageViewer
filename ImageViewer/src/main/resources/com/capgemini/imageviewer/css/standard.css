@@ -22,3 +22,34 @@
 	-fx-font-weight: bold;
 	-fx-font-size: 130.0%;
 }
+
+.arrow-right {
+   -fx-shape: "M 0 0 L 100 0 L 130 15 L 100 30 L 0 30 z";
+}
+
+.arrow-left {
+   -fx-shape: "M 0 0 L -100 0 L -130 15 L -100 30 L 0 30 z";
+}
+
+.glass-grey {
+    -fx-background-color: 
+        #c3c4c4,
+        linear-gradient(#d6d6d6 50.0%, white 100.0%),
+        radial-gradient(center 50.0% -40.0%, radius 200.0%, #e6e6e6 45.0%, rgba(230.0,230.0,230.0,0.0) 50.0%);
+    -fx-background-radius: 30.0;
+    -fx-background-insets: 0.0,1.0,1.0;
+    -fx-text-fill: black;
+    -fx-effect: dropshadow( three-pass-box , rgba(0.0,0.0,0.0,0.6) , 3.0, 0.0 , 0.0 , 1.0 );
+}
+
+.windows7-default {
+    -fx-background-color: 
+        #3c7fb1,
+        linear-gradient(#fafdfe, #e8f5fc),
+        linear-gradient(#eaf6fd 0.0%, #d9f0fc 49.0%, #bee6fd 50.0%, #a7d9f5 100.0%);
+    -fx-background-insets: 0.0,1.0,2.0;
+    -fx-background-radius: 3.0,2.0,1.0;
+    -fx-padding: 3.0 30.0 3.0 30.0;
+    -fx-text-fill: black;
+    -fx-font-size: 14.0px;
+}
