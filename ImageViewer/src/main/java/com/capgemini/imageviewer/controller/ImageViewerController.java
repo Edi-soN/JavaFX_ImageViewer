@@ -209,7 +209,24 @@ public class ImageViewerController {
 	@FXML
 	private void openFolderButtonAction(ActionEvent event) {
 		locateFile();
-		displayNextImage();
+		displayFirstImage();
+	}
+
+	private void displayFirstImage() {
+		if (!imageList.getItems().isEmpty()) {
+			Image image = null;
+			try {
+				imageList.getSelectionModel().selectFirst();
+				String nextImg = imageList.getSelectionModel().getSelectedItem();
+				image = new Image(images.get(nextImg).toURI().toURL().toString(), false);
+			} catch (MalformedURLException e) {
+				e.printStackTrace();
+			}
+			imageView.setFitWidth(0);
+			imageView.setFitHeight(0);
+			imageView.setImage(image);
+			imageView.setRotate(0.0);
+		}
 	}
 
 	@FXML
@@ -218,6 +235,7 @@ public class ImageViewerController {
 		directoryChooser.setTitle("Open Folder");
 		File fileDir = directoryChooser.showDialog(null);
 		if (fileDir != null) {
+			images.clear();
 			locationLabel.setText(fileDir.getAbsolutePath());
 			String[] fileExtension = new String[] { "jpg", "png", "gif", "bmp", "jpeg" };
 			for (File nextFile : fileDir.listFiles()) {
