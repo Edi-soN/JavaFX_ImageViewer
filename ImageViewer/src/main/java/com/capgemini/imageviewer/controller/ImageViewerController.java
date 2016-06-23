@@ -62,6 +62,7 @@ public class ImageViewerController {
 	@FXML
 	private void initialize() {
 
+		// REV: lepiej podpiac sie pod selectedItem
 		imageList.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
 			public void handle(MouseEvent event) {
@@ -71,6 +72,7 @@ public class ImageViewerController {
 						String nextImg = imageList.getSelectionModel().getSelectedItem();
 						image = new Image(images.get(nextImg).toURI().toURL().toString(), false);
 					} catch (MalformedURLException e) {
+						// REV: zawsze uzywaj loggera
 						e.printStackTrace();
 					}
 					imageView.setFitWidth(0);
@@ -81,6 +83,7 @@ public class ImageViewerController {
 			}
 		});
 
+		// REV: dlaczego InvalidationListener?
 		zoomProperty.addListener(new InvalidationListener() {
 			public void invalidated(Observable arg0) {
 				imageView.setFitWidth(zoomProperty.get() * 4);
@@ -88,6 +91,7 @@ public class ImageViewerController {
 			}
 		});
 
+		// REV: powinienes uzyc EventHandlera
 		scrollPane.addEventFilter(ScrollEvent.ANY, new EventHandler<ScrollEvent>() {
 			public void handle(ScrollEvent event) {
 				if (event.getDeltaY() > 0) {
@@ -108,6 +112,7 @@ public class ImageViewerController {
 						try {
 							image = new Image(images.get(nextImg).toURI().toURL().toString(), false);
 						} catch (MalformedURLException e) {
+							// REV: logger
 							e.printStackTrace();
 						}
 						imageView.setFitWidth(0);
@@ -135,12 +140,14 @@ public class ImageViewerController {
 					rotateImageClockwise();
 				}
 				if (event.getCode().equals(KeyCode.SPACE)) {
+					// REV: nie polecam tworzenia pustych ActionEventow
 					slideShowButtonAction(new ActionEvent());
 				}
 			}
 		});
 
 		ContextMenu contextMenu = new ContextMenu();
+		// REV: tekst z bundla
 		MenuItem setAsBackgroundImage = new MenuItem("Set as desktop background");
 		setAsBackgroundImage.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
@@ -164,6 +171,7 @@ public class ImageViewerController {
 						Runtime.getRuntime().exec(new String[] { "C:\\WINDOWS\\system32\\mspaint.exe", path });
 					}
 				} catch (IOException e) {
+					// REV: logger
 					e.printStackTrace();
 				}
 			}
@@ -179,6 +187,7 @@ public class ImageViewerController {
 						Runtime.getRuntime().exec("explorer " + path);
 					}
 				} catch (IllegalArgumentException | IOException iae) {
+					// REV: logger
 					iae.printStackTrace();
 					Alert alert = new Alert(AlertType.INFORMATION);
 					alert.setTitle("Info");
@@ -220,6 +229,7 @@ public class ImageViewerController {
 				String nextImg = imageList.getSelectionModel().getSelectedItem();
 				image = new Image(images.get(nextImg).toURI().toURL().toString(), false);
 			} catch (MalformedURLException e) {
+				// REV: j.w.
 				e.printStackTrace();
 			}
 			imageView.setFitWidth(0);
@@ -233,11 +243,13 @@ public class ImageViewerController {
 	private void locateFile() {
 		DirectoryChooser directoryChooser = new DirectoryChooser();
 		directoryChooser.setTitle("Open Folder");
+		// REV: okno powinno byc modalne
 		File fileDir = directoryChooser.showDialog(null);
 		if (fileDir != null) {
 			images.clear();
 			locationLabel.setText(fileDir.getAbsolutePath());
 			String[] fileExtension = new String[] { "jpg", "png", "gif", "bmp", "jpeg" };
+			// REV: listFiles() potrafi przefiltrowac pliki
 			for (File nextFile : fileDir.listFiles()) {
 				for (String extension : fileExtension) {
 					if (nextFile.getName().toLowerCase().endsWith(extension)) {
@@ -272,6 +284,7 @@ public class ImageViewerController {
 				String nextImg = imageList.getSelectionModel().getSelectedItem();
 				image = new Image(images.get(nextImg).toURI().toURL().toString(), false);
 			} catch (MalformedURLException e) {
+				// REV: logger
 				e.printStackTrace();
 			}
 			imageView.setFitWidth(0);
@@ -299,6 +312,7 @@ public class ImageViewerController {
 				String nextImg = imageList.getSelectionModel().getSelectedItem();
 				image = new Image(images.get(nextImg).toURI().toURL().toString(), false);
 			} catch (MalformedURLException e) {
+				// REV: logger
 				e.printStackTrace();
 			}
 			imageView.setFitWidth(0);
@@ -309,6 +323,7 @@ public class ImageViewerController {
 
 	}
 
+	// REV: slaba nazwa, lepiej isSlideshowActive
 	private boolean isClicked = false;
 
 	@FXML

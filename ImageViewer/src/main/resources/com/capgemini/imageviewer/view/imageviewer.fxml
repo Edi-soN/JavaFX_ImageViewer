@@ -13,13 +13,16 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="872.0" prefWidth="1279.0" xmlns="http://javafx.com/javafx/8.0.66" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.capgemini.imageviewer.controller.ImageViewerController">
    <top>
+  	<!-- REV: teksty z bundla -->
       <Label alignment="CENTER" prefHeight="2.0" prefWidth="1279.0" text="Super Simple Image Viewer" BorderPane.alignment="CENTER">
          <font>
+         	<!-- REV: lepiej zrobic to w CSSie -->
             <Font name="System Bold" size="19.0" />
          </font>
       </Label>
    </top>
    <bottom>
+   	<!-- REV: ten Pane nie jest potrzebny -->
       <Pane prefHeight="66.0" prefWidth="1279.0" BorderPane.alignment="CENTER">
          <children>
             <GridPane layoutX="-1.0" layoutY="1.0" prefHeight="64.0" prefWidth="1279.0">
@@ -36,6 +39,7 @@
                   <Label fx:id="locationLabel" prefHeight="90.0" prefWidth="1105.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="100.0" GridPane.columnIndex="1">
                      <children>
+                     	<!-- REV: nie ma potrzeby podpinania CSSa pod konkretne kontrolki, jest podpiety pod scene -->
                         <Button fx:id="previousImageButton" mnemonicParsing="false" onAction="#previousImageButtonAction" prefHeight="50.0" prefWidth="100.0" styleClass="arrow-left" stylesheets="@../css/standard.css" text="Previous" />
                         <Button fx:id="slideShowButton" mnemonicParsing="false" onAction="#slideShowButtonAction" prefHeight="32.0" prefWidth="117.0" styleClass="glass-grey" stylesheets="@../css/standard.css" text="Start SlideShow" textAlignment="CENTER" wrapText="true">
                            <font>
@@ -63,6 +67,7 @@
             <Button fx:id="openFolderButton" mnemonicParsing="false" onAction="#openFolderButtonAction" prefHeight="54.0" prefWidth="172.0" styleClass="windows7-default" stylesheets="@../css/standard.css" text="Open folder" />
             <ListView fx:id="imageList" GridPane.rowIndex="1" />
          </children>
+         <!-- REV: niepotrzebny element -->
          <BorderPane.margin>
             <Insets />
          </BorderPane.margin>
